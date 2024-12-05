@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\MeetingController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,6 @@ Route::resource('visitors', VisitorController::class);
 
 
 Route::resource('meetings', MeetingController::class);
+
+
+Route::resource('employees', EmployeeController::class);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Meeting;
 use App\Models\Visitor;
 use App\Models\User;
+use App\Notifications\MeetingScheduledNotification;
 
 use Illuminate\Http\Request;
 
@@ -49,8 +50,13 @@ class MeetingController extends Controller
         'type' => 'required|string|max:255',
     ]);
 
-    Meeting::create($request->all()); // Save the meeting to the database
-    return redirect()->route('meetings.index')->with('success', 'Meeting scheduled successfully.');
+    $meeting = Meeting::create($request->all());
+
+    // Notify the employee
+    $employee = User::find($request->employee_id);
+    $employee->notify(new MeetingScheduledNotification($meeting));
+
+    return redirect()->route('meetings.index')->with('success', 'Meeting scheduled successfully, and notification sent.');
 }
 
 
