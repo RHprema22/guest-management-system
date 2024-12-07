@@ -4,52 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meetings by Employee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2rem;
+            color: #4A007E;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4A007E;
+            color: white;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        a, button {
+            text-decoration: none;
+            color: white;
+            background-color: #4A007E;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        a:hover, button:hover {
+            background-color: #6A00B8;
+        }
+        form {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-@extends('layouts.app')
-
-@section('content')
-    <!-- <h1>Welcome to the Page</h1> -->
-@endsection
-    <h1>Report: Meetings by Employee</h1>
-    <a href="{{ route('meetings.index') }}">Back to Meetings</a>
-
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Employee Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Total Meetings</th>
-                <th>Meeting Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($employees as $employee)
+    <div class="container">
+        <div class="buttons">
+            <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+            <form action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+        </div>
+        <h1>Report: Meetings by Employee</h1>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ $employee->name }}</td>
-                    <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->phone }}</td>
-                    <td>{{ $employee->meetings->count() }}</td>
-                    <td>
-                        <ul>
-                            @foreach ($employee->meetings as $meeting)
-                                <li>
-                                    <strong>Meeting ID:</strong> {{ $meeting->id }} <br>
-                                    <strong>Type:</strong> {{ $meeting->type }} <br>
-                                    <strong>Scheduled Time:</strong> {{ $meeting->scheduled_time }} <br>
-                                    <strong>Summary:</strong> 
-                                    {{ $meeting->summary->summary ?? 'No summary available' }} <br>
-                                    <strong>Progress:</strong> 
-                                    {{ $meeting->summary->progress ?? 'No progress available' }}
-                                </li>
-                                <hr>
-                            @endforeach
-                        </ul>
-                    </td>
+                    <th>Employee Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Total Meetings</th>
+                    <th>Meeting Details</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($employees as $employee)
+                    <tr>
+                        <td>{{ $employee->name }}</td>
+                        <td>{{ $employee->email }}</td>
+                        <td>{{ $employee->phone }}</td>
+                        <td>{{ $employee->meetings->count() }}</td>
+                        <td>
+                            <ul>
+                                @foreach ($employee->meetings as $meeting)
+                                    <li>
+                                        <strong>Meeting ID:</strong> {{ $meeting->id }} <br>
+                                        <strong>Type:</strong> {{ $meeting->type }} <br>
+                                        <strong>Scheduled Time:</strong> {{ $meeting->scheduled_time }} <br>
+                                        <strong>Summary:</strong> 
+                                        {{ $meeting->summary->summary ?? 'No summary available' }} <br>
+                                        <strong>Progress:</strong> 
+                                        {{ $meeting->summary->progress ?? 'No progress available' }}
+                                    </li>
+                                    <hr>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
