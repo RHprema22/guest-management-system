@@ -37,6 +37,7 @@
                     <td>
                         <a href="{{ route('meetings.show', $meeting->id) }}">View</a>
                         <a href="{{ route('meetings.edit', $meeting->id) }}">Edit</a>
+                        <a href="{{ route('meeting.summary.edit', $meeting->id) }}">Add/Edit Summary</a>
                         <form action="{{ route('meetings.destroy', $meeting->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
