@@ -6,6 +6,11 @@
     <title>Employees</title>
 </head>
 <body>
+@extends('layouts.app')
+
+@section('content')
+    <!-- <h1>Welcome to the Page</h1> -->
+@endsection
     <h1>Employee List</h1>
     <a href="{{ route('employees.create') }}">Add Employee</a>
 

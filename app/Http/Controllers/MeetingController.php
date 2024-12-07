@@ -16,10 +16,10 @@ class MeetingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-{
-    $meetings = Meeting::with(['visitor', 'employee'])->get(); // Retrieve meetings with relations
-    return view('meetings.index', compact('meetings')); // Pass to the view
-}
+    {
+        $meetings = Meeting::with(['visitor', 'employee'])->get();
+        return view('meetings.index', compact('meetings'));
+    }
 
 
     /**

@@ -6,6 +6,11 @@
     <title>Meetings by Employee</title>
 </head>
 <body>
+@extends('layouts.app')
+
+@section('content')
+    <!-- <h1>Welcome to the Page</h1> -->
+@endsection
     <h1>Report: Meetings by Employee</h1>
     <a href="{{ route('meetings.index') }}">Back to Meetings</a>
 

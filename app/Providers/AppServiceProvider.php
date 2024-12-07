@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +23,20 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        //
-    }
+
+public function boot()
+{
+    View::share('dashboardUrl', function () {
+        if (Auth::check()) {
+            if (Auth::user()->role === 'admin') {
+                return route('admin.dashboard');
+            }
+            if (Auth::user()->role === 'employee') {
+                return route('employee.dashboard');
+            }
+        }
+        return route('login'); // Redirect to login if not authenticated
+    });
+}
+
 }

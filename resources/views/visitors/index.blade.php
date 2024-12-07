@@ -6,6 +6,12 @@
     <title>Visitors</title>
 </head>
 <body>
+@extends('layouts.app')
+
+@section('content')
+    <h1>Welcome to the Page</h1>
+@endsection
+
     <h1>Visitor List</h1>
     <a href="{{ route('visitors.create') }}">Add Visitor</a>
 

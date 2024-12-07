@@ -6,6 +6,11 @@
     <title>Meetings</title>
 </head>
 <body>
+@extends('layouts.app')
+
+@section('content')
+    <!-- <h1>Welcome to the Page</h1> -->
+@endsection
     <h1>Meeting List</h1>
     <a href="{{ route('meetings.create') }}">Schedule New Meeting</a>
 
