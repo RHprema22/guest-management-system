@@ -16,6 +16,13 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            width: 120px;
+            height: auto;
         }
         .container {
             width: 100%;
@@ -25,9 +32,10 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
         }
         h1 {
-            text-align: center;
             font-size: 1.8rem;
             color: #4A007E;
             margin-bottom: 20px;
@@ -90,6 +98,7 @@
     </style>
 </head>
 <body>
+    <img src="{{ asset('images/logo.svg') }}" alt="Logo" class="logo">
     <div class="container">
         <h1>Login</h1>
         @if (session('error'))
