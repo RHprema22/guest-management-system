@@ -1,66 +1,154 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+---
 
-## About Laravel
+# **Guest Management System**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## **Project Overview**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The **Guest Management System** is a web-based application developed for **JCX Development LTD**, a real estate company in Bashundhara. The system facilitates efficient visitor scheduling, meeting management, and reporting. The primary users include **front desk employees**, **company staff**, and **administrators**.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## **Features**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### **1. User Roles**
+- **Admin**:
+  - Manage employees (add, edit, delete).
+  - View detailed reports.
+- **Employee**:
+  - Manage visitors (add, edit, delete).
+  - Schedule, edit, and manage meetings.
+  - Add/edit meeting summaries.
+- **Front Desk**:
+  - Handle visitor entries and schedules.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### **2. Core Functionalities**
+1. **Visitor Management**:
+   - Add, edit, delete visitor details.
+   - View detailed visitor information.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Meeting Management**:
+   - Schedule meetings between visitors and employees.
+   - Edit meeting details (time, type, participants).
+   - Add/edit meeting summaries and progress reports.
 
-## Laravel Sponsors
+3. **Reports**:
+   - Meetings by employee.
+   - Meetings grouped by type.
+   - Monthly meeting summaries.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+4. **Authentication**:
+   - Role-based access control (RBAC).
+   - Admin and employee-specific dashboards.
 
-### Premium Partners
+5. **Notifications**:
+   - Email notifications to employees when meetings are scheduled.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+---
 
-## Contributing
+## **Tech Stack**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### **Backend**
+- **Framework**: Laravel
+- **Database**: MySQL
 
-## Code of Conduct
+### **Frontend**
+- **CSS Framework**: Vanilla CSS
+- **JavaScript**: Vanilla JS for interactions
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### **Tools**
+- **Mail**: Laravel's built-in email notification system.
+- **Version Control**: Git
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## **Project Structure**
 
-## License
+```
+/guest-management-system
+│
+├── /app
+│   ├── /Http
+│   │   ├── /Controllers
+│   │   │   ├── VisitorController.php
+│   │   │   ├── MeetingController.php
+│   │   │   ├── ReportController.php
+│   │   │   ├── AuthController.php
+│   │   │   └── MeetingSummaryController.php
+│   │   ├── /Middleware
+│   │   └── Kernel.php
+│   ├── /Models
+│   │   ├── User.php
+│   │   ├── Visitor.php
+│   │   ├── Meeting.php
+│   │   └── MeetingSummary.php
+│
+├── /resources
+│   ├── /views
+│   │   ├── /auth
+│   │   │   └── login.blade.php
+│   │   ├── /employees
+│   │   │   ├── index.blade.php
+│   │   │   ├── create.blade.php
+│   │   │   └── edit.blade.php
+│   │   ├── /meetings
+│   │   │   ├── index.blade.php
+│   │   │   ├── create.blade.php
+│   │   │   ├── edit.blade.php
+│   │   │   └── show.blade.php
+│   │   ├── /visitors
+│   │   │   ├── index.blade.php
+│   │   │   ├── create.blade.php
+│   │   │   └── edit.blade.php
+│   │   └── /reports
+│   │       ├── meetings_by_employee.blade.php
+│   │       ├── meetings_by_type.blade.php
+│   │       └── monthly_summary.blade.php
+│
+├── /public
+│   ├── /images
+│   │   └── logo.svg
+│
+└── /routes
+    └── web.php
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## **Usage**
+
+### **Login**
+- **Admin**: `admin@example.com` / `password`
+- **Employee**: `employee@example.com` / `password`
+
+### **Admin Dashboard**
+- Manage employees and generate reports.
+
+### **Employee Dashboard**
+- Manage visitors and meetings.
+
+---
+
+## **Screenshots**
+
+### **Login Page**
+![Login Page](public/images/screenshots/login-page.png)
+
+### **Admin Dashboard**
+![Admin Dashboard](public/images/screenshots/admin-dashboard.png)
+
+### **Employee Dashboard**
+![Employee Dashboard](public/images/screenshots/employee-dashboard.png)
+
+---
+
+## **Future Enhancements**
+- Add search and filter functionalities for visitors and meetings.
+- Implement advanced analytics in the reporting module.
+- Integrate WhatsApp API for meeting notifications.
+
+---
+
+## **Project Created By**
+- **Prema Haque**
+---
