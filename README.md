@@ -150,5 +150,5 @@ The **Guest Management System** is a web-based application developed for **JCX D
 ---
 
 ## **Project Created By**
-- **Prema Haque**
+- **Raima Haque Prema**
 ---
